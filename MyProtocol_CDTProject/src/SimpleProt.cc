@@ -133,26 +133,19 @@ static UMLRTObject payload_disconnect_req =
 
 static UMLRTObject_field fields_send_data[] = 
 {
-    #ifdef NEED_NON_FLEXIBLE_ARRAY
     {
+        "data",
+        &UMLRTType_charptr,
         0,
-        0,
-        0,
-        0,
+        1,
         0
     }
-    #endif
 };
 
 static UMLRTObject payload_send_data = 
 {
-    0,
-    #ifdef NEED_NON_FLEXIBLE_ARRAY
-    1
-    #else
-    0
-    #endif
-    ,
+    sizeof( char * ),
+    1,
     fields_send_data
 };
 
@@ -196,10 +189,10 @@ UMLRTOutSignal SimpleProt::Base::disconnect_req() const
     return signal;
 }
 
-UMLRTOutSignal SimpleProt::Base::send_data() const
+UMLRTOutSignal SimpleProt::Base::send_data( char * data ) const
 {
     UMLRTOutSignal signal;
-    signal.initialize( "send_data", signal_send_data, srcPort, &payload_send_data );
+    signal.initialize( "send_data", signal_send_data, srcPort, &payload_send_data, &data );
     return signal;
 }
 

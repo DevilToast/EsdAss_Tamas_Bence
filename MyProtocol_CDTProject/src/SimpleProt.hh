@@ -19,7 +19,7 @@ namespace SimpleProt
         UMLRTInSignal disconnect_ok() const;
         UMLRTOutSignal connect_req() const;
         UMLRTOutSignal disconnect_req() const;
-        UMLRTOutSignal send_data() const;
+        UMLRTOutSignal send_data( char * data ) const;
     };
     class Conj : public UMLRTProtocol
     {

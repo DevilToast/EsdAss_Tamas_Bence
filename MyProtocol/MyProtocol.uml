@@ -28,8 +28,8 @@
       <packagedElement xmi:type="uml:Interface" xmi:id="_qssiwEFiEei2i-24u3bMhw" name="SimpleProt~">
         <ownedOperation xmi:type="uml:Operation" xmi:id="_xBzDoEFiEei2i-24u3bMhw" name="connect_req"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_18e08EFiEei2i-24u3bMhw" name="send_data">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_tFB4MEHHEeiseuml0EvIyA" name="data">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusC_Cpp_LIBRARIES/AnsiCLibrary.uml#_8kiVYOmJEeG_gcDHG3asaQ"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_2usvQEIWEeiJEpxm6XETew" name="data">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_48PxsEFiEei2i-24u3bMhw" name="disconnect_req"/>
@@ -77,7 +77,7 @@ char payload[10];
 for (int i = 0; i &lt; 10; i++) {
 	payload[i] = rand() % 256;
 }
-simpleProtocolPort.send_data().send();</body>
+simpleProtocolPort.send_data(&quot;FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF&quot;).send();</body>
             </effect>
             <trigger xmi:type="uml:Trigger" xmi:id="_1wVH8EFlEei2i-24u3bMhw" event="_zJa3cEFiEei2i-24u3bMhw" port="_R_EV8EFjEei2i-24u3bMhw"/>
           </transition>
@@ -91,7 +91,7 @@ if ( dataCount &lt;= 5 ) {
 	for (int i = 0; i &lt; 10; i++) {
 		payload[i] = rand() % 256;
 	}
-	simpleProtocolPort.send_data().send();
+	simpleProtocolPort.send_data(&quot;FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF&quot;).send();
 	dataCount++;
 } else {
 	simpleProtocolPort.disconnect_req().send();
@@ -161,11 +161,8 @@ log.log(&quot;Requesting connection&quot;);</body>
           <transition xmi:type="uml:Transition" xmi:id="_lEf5QEFkEei2i-24u3bMhw" name="" kind="external" source="_e0-b8EFkEei2i-24u3bMhw" target="_e0-b8EFkEei2i-24u3bMhw">
             <effect xmi:type="uml:OpaqueBehavior" xmi:id="_lrijwEFnEei2i-24u3bMhw" name="Effect" isReentrant="false">
               <language>C++</language>
-              <body>if ( simpleProtocolPort.ack_data().send() ) {
-    		log.log( &quot;Data ack!&quot;);
-		} else {
-    		log.log( &quot;Error in data ack!&quot;);
-		}</body>
+              <body>log.log(data);
+simpleProtocolPort.ack_data().send();</body>
             </effect>
             <trigger xmi:type="uml:Trigger" xmi:id="_lyJCYEFkEei2i-24u3bMhw" event="_18h4QEFiEei2i-24u3bMhw" port="_PpZCkEFkEei2i-24u3bMhw"/>
           </transition>

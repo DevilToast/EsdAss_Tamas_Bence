@@ -173,10 +173,10 @@ UMLRTCommsPort internalports_Top_server[] =
 {
     {
         &Server,
-        Capsule_Server::internalport_timer,
+        Capsule_Server::internalport_log,
         &Top_slots[InstId_Top_server],
         1,
-        &internalfarEndList_Top_server[1],
+        internalfarEndList_Top_server,
         NULL,
         NULL,
         "",
@@ -194,10 +194,10 @@ UMLRTCommsPort internalports_Top_server[] =
     },
     {
         &Server,
-        Capsule_Server::internalport_log,
+        Capsule_Server::internalport_timer,
         &Top_slots[InstId_Top_server],
         1,
-        internalfarEndList_Top_server,
+        &internalfarEndList_Top_server[1],
         NULL,
         NULL,
         "",

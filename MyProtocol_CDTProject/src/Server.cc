@@ -113,7 +113,7 @@ void Capsule_Server::transitionaction_____transition1( const UMLRTMessage * msg 
     for (int i = 0; i < 10; i++) {
     payload[i] = rand() % 256;
     }
-    simpleProtocolPort.send_data().send();
+    simpleProtocolPort.send_data("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF").send();
     /* UMLRTGEN-USERREGION-END */
     #undef rtdata
 }
@@ -129,7 +129,7 @@ void Capsule_Server::transitionaction_____transition2( const UMLRTMessage * msg 
     for (int i = 0; i < 10; i++) {
     payload[i] = rand() % 256;
     }
-    simpleProtocolPort.send_data().send();
+    simpleProtocolPort.send_data("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF").send();
     dataCount++;
     } else {
     simpleProtocolPort.disconnect_req().send();

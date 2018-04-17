@@ -102,17 +102,14 @@ void Capsule_Client::transitionaction_____transition1( const UMLRTMessage * msg 
 
 void Capsule_Client::transitionaction_____transition2( const UMLRTMessage * msg )
 {
-    #define payload ( (void *)msg->getParam( 0 ) )
-    #define rtdata ( (void *)msg->getParam( 0 ) )
+    #define data ( *(const char * *)msg->getParam( 0 ) )
+    #define rtdata ( (const char * *)msg->getParam( 0 ) )
     /* UMLRTGEN-USERREGION-BEGIN platform:/resource/MyProtocol/MyProtocol.uml MyProtocol::Client transition Connected,Connected,send_data:simpleProtocolPort */
-    if ( simpleProtocolPort.ack_data().send() ) {
-    log.log( "Data ack!");
-    } else {
-    log.log( "Error in data ack!");
-    }
+    log.log(data);
+    simpleProtocolPort.ack_data().send();
     /* UMLRTGEN-USERREGION-END */
     #undef rtdata
-    #undef payload
+    #undef data
 }
 
 void Capsule_Client::transitionaction_____transition3( const UMLRTMessage * msg )
