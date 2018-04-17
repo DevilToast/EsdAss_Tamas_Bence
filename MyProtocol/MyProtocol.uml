@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:UMLRTStateMachines="http://www.eclipse.org/papyrus/umlrt/statemachine" xmlns:UMLRealTime="http://www.eclipse.org/papyrus/umlrt" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
+  <uml:Model xmi:id="_Jwe9UD1lEeiIRJ4hx81T3A" name="MyProtocol">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Jwe9UT1lEeiIRJ4hx81T3A" source="http://www.eclipse.org/papyrus-rt/language/1.0.0">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Jwe9Uj1lEeiIRJ4hx81T3A" key="language" value="umlrt-cpp"/>
+    </eAnnotations>
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_SG8NwD1sEeiIRJ4hx81T3A" source="UMLRT_Default_top">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_SG-C8D1sEeiIRJ4hx81T3A" key="top_name" value="Top"/>
+    </eAnnotations>
+    <packagedElement xmi:type="uml:Class" xmi:id="_XL7nED1rEeiIRJ4hx81T3A" name="Top" isActive="true">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_4DB4cEFnEei2i-24u3bMhw" name="server" visibility="protected" type="_9xUDMEFiEei2i-24u3bMhw" isOrdered="true" aggregation="composite"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_6E8s4EFnEei2i-24u3bMhw" name="client" visibility="protected" type="_M08lAEFkEei2i-24u3bMhw" isOrdered="true" aggregation="composite"/>
+      <ownedConnector xmi:type="uml:Connector" xmi:id="_FQs-MEFpEei2i-24u3bMhw" name="RTConnector1">
+        <end xmi:type="uml:ConnectorEnd" xmi:id="_FQvacEFpEei2i-24u3bMhw" partWithPort="_4DB4cEFnEei2i-24u3bMhw" role="_R_EV8EFjEei2i-24u3bMhw"/>
+        <end xmi:type="uml:ConnectorEnd" xmi:id="_FQvacUFpEei2i-24u3bMhw" partWithPort="_6E8s4EFnEei2i-24u3bMhw" role="_PpZCkEFkEei2i-24u3bMhw"/>
+      </ownedConnector>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_qsGs4EFiEei2i-24u3bMhw" name="SimpleProt">
+      <packagedElement xmi:type="uml:Collaboration" xmi:id="_ql5-QEFiEei2i-24u3bMhw" name="SimpleProt">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_qso4YEFiEei2i-24u3bMhw" client="_ql5-QEFiEei2i-24u3bMhw" supplier="_qsfHYEFiEei2i-24u3bMhw" contract="_qsfHYEFiEei2i-24u3bMhw"/>
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_qs-2oEFiEei2i-24u3bMhw" client="_ql5-QEFiEei2i-24u3bMhw" supplier="_qs3h4EFiEei2i-24u3bMhw" contract="_qs3h4EFiEei2i-24u3bMhw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Interface" xmi:id="_qsfHYEFiEei2i-24u3bMhw" name="SimpleProt">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_zJYbMEFiEei2i-24u3bMhw" name="connect_ack"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_3KMlQEFiEei2i-24u3bMhw" name="ack_data"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_6LTl0EFiEei2i-24u3bMhw" name="disconnect_ok"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Interface" xmi:id="_qssiwEFiEei2i-24u3bMhw" name="SimpleProt~">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_xBzDoEFiEei2i-24u3bMhw" name="connect_req"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_18e08EFiEei2i-24u3bMhw" name="send_data">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_tFB4MEHHEeiseuml0EvIyA" name="data">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusC_Cpp_LIBRARIES/AnsiCLibrary.uml#_8kiVYOmJEeG_gcDHG3asaQ"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_48PxsEFiEei2i-24u3bMhw" name="disconnect_req"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Usage" xmi:id="_qs1FoEFiEei2i-24u3bMhw" client="_ql5-QEFiEei2i-24u3bMhw" supplier="_qssiwEFiEei2i-24u3bMhw"/>
+      <packagedElement xmi:type="uml:AnyReceiveEvent" xmi:id="_qs2TwEFiEei2i-24u3bMhw" name="*"/>
+      <packagedElement xmi:type="uml:Interface" xmi:id="_qs3h4EFiEei2i-24u3bMhw" name="SimpleProtIO"/>
+      <packagedElement xmi:type="uml:Usage" xmi:id="_qtAr0EFiEei2i-24u3bMhw" client="_ql5-QEFiEei2i-24u3bMhw" supplier="_qs3h4EFiEei2i-24u3bMhw"/>
+      <packagedElement xmi:type="uml:CallEvent" xmi:id="_xB2G8EFiEei2i-24u3bMhw" operation="_xBzDoEFiEei2i-24u3bMhw"/>
+      <packagedElement xmi:type="uml:CallEvent" xmi:id="_zJa3cEFiEei2i-24u3bMhw" operation="_zJYbMEFiEei2i-24u3bMhw"/>
+      <packagedElement xmi:type="uml:CallEvent" xmi:id="_18h4QEFiEei2i-24u3bMhw" operation="_18e08EFiEei2i-24u3bMhw"/>
+      <packagedElement xmi:type="uml:CallEvent" xmi:id="_3KPBgEFiEei2i-24u3bMhw" operation="_3KMlQEFiEei2i-24u3bMhw"/>
+      <packagedElement xmi:type="uml:CallEvent" xmi:id="_48Rm4EFiEei2i-24u3bMhw" operation="_48PxsEFiEei2i-24u3bMhw"/>
+      <packagedElement xmi:type="uml:CallEvent" xmi:id="_6LWCEEFiEei2i-24u3bMhw" operation="_6LTl0EFiEei2i-24u3bMhw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_9xUDMEFiEei2i-24u3bMhw" name="Server" classifierBehavior="_BAc4sEFjEei2i-24u3bMhw" isActive="true">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_R_EV8EFjEei2i-24u3bMhw" name="simpleProtocolPort" visibility="public" type="_ql5-QEFiEei2i-24u3bMhw" isOrdered="true" aggregation="composite" isBehavior="true" isService="true"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_Vy-FYEFjEei2i-24u3bMhw" name="log" visibility="protected" isOrdered="true" aggregation="composite" isBehavior="true" isService="false">
+        <type xmi:type="uml:Collaboration" href="pathmap://UMLRTRTSLIB/UMLRT-RTS.uml#_6kIb0IeXEeSVyrlWP4nYew"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Sk77wEFmEei2i-24u3bMhw" name="dataCount" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusC_Cpp_LIBRARIES/AnsiCLibrary.uml#_LTZesByeEduyofBvg4RL2w"/>
+        <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_XB85oEFmEei2i-24u3bMhw" value="0"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_1cFKsEFvEei2i-24u3bMhw" name="timer" visibility="protected" isOrdered="true" aggregation="composite" isBehavior="true" isService="false">
+        <type xmi:type="uml:Collaboration" href="pathmap://UMLRTRTSLIB/UMLRT-RTS.uml#_MxQZgGXsEeS_4daqvwyFrg"/>
+      </ownedAttribute>
+      <ownedBehavior xmi:type="uml:StateMachine" xmi:id="_BAc4sEFjEei2i-24u3bMhw" name="StateMachine" isReentrant="false">
+        <region xmi:type="uml:Region" xmi:id="_BAyP4EFjEei2i-24u3bMhw" name="Region">
+          <transition xmi:type="uml:Transition" xmi:id="_BBOUwEFjEei2i-24u3bMhw" name="Initial" source="_BA49kEFjEei2i-24u3bMhw" target="_BBHnEEFjEei2i-24u3bMhw">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_EVAHIEG6Eeiseuml0EvIyA" name="Effect" isReentrant="false">
+              <language>C++</language>
+              <body>srand(time(0));
+
+timer.informIn(UMLRTTimespec(60,0));
+simpleProtocolPort.connect_req().send();
+log.log(&quot;Requesting connection&quot;);</body>
+            </effect>
+          </transition>
+          <transition xmi:type="uml:Transition" xmi:id="_ivdJ8EFjEei2i-24u3bMhw" name="" kind="external" source="_BBHnEEFjEei2i-24u3bMhw" target="_KZgSwEFjEei2i-24u3bMhw">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_znDuUEFlEei2i-24u3bMhw" name="Effect" isReentrant="false">
+              <language>C++</language>
+              <body>log.log(&quot;Send data&quot;);
+char payload[10];
+for (int i = 0; i &lt; 10; i++) {
+	payload[i] = rand() % 256;
+}
+simpleProtocolPort.send_data().send();</body>
+            </effect>
+            <trigger xmi:type="uml:Trigger" xmi:id="_1wVH8EFlEei2i-24u3bMhw" event="_zJa3cEFiEei2i-24u3bMhw" port="_R_EV8EFjEei2i-24u3bMhw"/>
+          </transition>
+          <transition xmi:type="uml:Transition" xmi:id="_zsFqMEFjEei2i-24u3bMhw" name="" kind="external" source="_KZgSwEFjEei2i-24u3bMhw" target="_KZgSwEFjEei2i-24u3bMhw">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_loo2MEFmEei2i-24u3bMhw" name="Effect" isReentrant="false">
+              <language>C++</language>
+              <body>// Start the game by sending a &quot;ping&quot; to the other player
+log.log(&quot;Send data&quot;);
+if ( dataCount &lt;= 5 ) {
+	char payload[10];
+	for (int i = 0; i &lt; 10; i++) {
+		payload[i] = rand() % 256;
+	}
+	simpleProtocolPort.send_data().send();
+	dataCount++;
+} else {
+	simpleProtocolPort.disconnect_req().send();
+}
+
+</body>
+            </effect>
+            <trigger xmi:type="uml:Trigger" xmi:id="_9tYwAEFjEei2i-24u3bMhw" event="_3KPBgEFiEei2i-24u3bMhw" port="_R_EV8EFjEei2i-24u3bMhw"/>
+          </transition>
+          <transition xmi:type="uml:Transition" xmi:id="_AjHnAEFkEei2i-24u3bMhw" name="" kind="external" source="_KZgSwEFjEei2i-24u3bMhw" target="_BBHnEEFjEei2i-24u3bMhw">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_GHI-UEFmEei2i-24u3bMhw" name="Effect" isReentrant="false">
+              <language>C++</language>
+              <body>    log.log(&quot;Successful transfer&quot;);
+</body>
+            </effect>
+            <trigger xmi:type="uml:Trigger" xmi:id="_BzPyIEFkEei2i-24u3bMhw" event="_6LWCEEFiEei2i-24u3bMhw" port="_R_EV8EFjEei2i-24u3bMhw"/>
+          </transition>
+          <transition xmi:type="uml:Transition" xmi:id="_Hw5nEEGKEeiseuml0EvIyA" name="" kind="external" source="_BBHnEEFjEei2i-24u3bMhw" target="_BBHnEEFjEei2i-24u3bMhw">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_CoitsEGsEeiseuml0EvIyA" name="Effect" isReentrant="false">
+              <language>C++</language>
+              <body>log.log(&quot;Request timed out&quot;);
+
+timer.informIn(UMLRTTimespec(60,0));
+simpleProtocolPort.connect_req().send();
+log.log(&quot;Requesting connection&quot;);</body>
+            </effect>
+            <trigger xmi:type="uml:Trigger" xmi:id="_JdnAgEGKEeiseuml0EvIyA" port="_1cFKsEFvEei2i-24u3bMhw">
+              <event xmi:type="uml:CallEvent" href="pathmap://UMLRTRTSLIB/UMLRT-RTS.uml#_IaEO8HDxEeSwWKwNKw1iAA"/>
+            </trigger>
+          </transition>
+          <transition xmi:type="uml:Transition" xmi:id="_LlcREEHJEeiseuml0EvIyA" name="" kind="external" source="_KZgSwEFjEei2i-24u3bMhw" target="_BBHnEEFjEei2i-24u3bMhw">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_OqyRYEHJEeiseuml0EvIyA" name="Effect" isReentrant="false">
+              <language>C++</language>
+              <body>log.log(&quot;unsuccessful transfer, start again and go to start state&quot;);
+
+timer.informIn(UMLRTTimespec(60,0));
+simpleProtocolPort.connect_req().send();
+log.log(&quot;Requesting connection&quot;);</body>
+            </effect>
+            <trigger xmi:type="uml:Trigger" xmi:id="_Rv62UEHJEeiseuml0EvIyA" event="_zJa3cEFiEei2i-24u3bMhw" port="_R_EV8EFjEei2i-24u3bMhw"/>
+          </transition>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_BA49kEFjEei2i-24u3bMhw" kind="initial"/>
+          <subvertex xmi:type="uml:State" xmi:id="_BBHnEEFjEei2i-24u3bMhw" name="Idle"/>
+          <subvertex xmi:type="uml:State" xmi:id="_KZgSwEFjEei2i-24u3bMhw" name="Connected"/>
+        </region>
+      </ownedBehavior>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_M08lAEFkEei2i-24u3bMhw" name="Client" classifierBehavior="_Sy5KIEFkEei2i-24u3bMhw" isActive="true">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_PpZCkEFkEei2i-24u3bMhw" name="simpleProtocolPort" visibility="public" type="_ql5-QEFiEei2i-24u3bMhw" isOrdered="true" aggregation="composite" isBehavior="true" isConjugated="true" isService="true"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_RckQYEFkEei2i-24u3bMhw" name="log" visibility="protected" isOrdered="true" aggregation="composite" isBehavior="true" isService="false">
+        <type xmi:type="uml:Collaboration" href="pathmap://UMLRTRTSLIB/UMLRT-RTS.uml#_6kIb0IeXEeSVyrlWP4nYew"/>
+      </ownedAttribute>
+      <ownedBehavior xmi:type="uml:StateMachine" xmi:id="_Sy5KIEFkEei2i-24u3bMhw" name="StateMachine" isReentrant="false">
+        <region xmi:type="uml:Region" xmi:id="_Sy_30EFkEei2i-24u3bMhw" name="Region">
+          <transition xmi:type="uml:Transition" xmi:id="_SzMsIEFkEei2i-24u3bMhw" name="Initial" source="_SzC7IEFkEei2i-24u3bMhw" target="_SzHzoEFkEei2i-24u3bMhw"/>
+          <transition xmi:type="uml:Transition" xmi:id="_iPbwoEFkEei2i-24u3bMhw" name="" kind="external" source="_SzHzoEFkEei2i-24u3bMhw" target="_e0-b8EFkEei2i-24u3bMhw">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_Zql6YEFnEei2i-24u3bMhw" name="Effect" isReentrant="false">
+              <language>C++</language>
+              <body> if ( simpleProtocolPort.connect_ack().send() ) {
+    	log.log( &quot;Connect ack!&quot;);
+} else {
+    	log.log( &quot;Error in connect ack!&quot;);
+} </body>
+            </effect>
+            <trigger xmi:type="uml:Trigger" xmi:id="_iwyKMEFkEei2i-24u3bMhw" event="_xB2G8EFiEei2i-24u3bMhw" port="_PpZCkEFkEei2i-24u3bMhw"/>
+          </transition>
+          <transition xmi:type="uml:Transition" xmi:id="_lEf5QEFkEei2i-24u3bMhw" name="" kind="external" source="_e0-b8EFkEei2i-24u3bMhw" target="_e0-b8EFkEei2i-24u3bMhw">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_lrijwEFnEei2i-24u3bMhw" name="Effect" isReentrant="false">
+              <language>C++</language>
+              <body>if ( simpleProtocolPort.ack_data().send() ) {
+    		log.log( &quot;Data ack!&quot;);
+		} else {
+    		log.log( &quot;Error in data ack!&quot;);
+		}</body>
+            </effect>
+            <trigger xmi:type="uml:Trigger" xmi:id="_lyJCYEFkEei2i-24u3bMhw" event="_18h4QEFiEei2i-24u3bMhw" port="_PpZCkEFkEei2i-24u3bMhw"/>
+          </transition>
+          <transition xmi:type="uml:Transition" xmi:id="_oBU2wEFkEei2i-24u3bMhw" name="" kind="external" source="_e0-b8EFkEei2i-24u3bMhw" target="_SzHzoEFkEei2i-24u3bMhw">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_nzGtMEFnEei2i-24u3bMhw" name="Effect" isReentrant="false">
+              <language>C++</language>
+              <body>    if ( simpleProtocolPort.disconnect_ok().send() ) {
+    log.log( &quot;Disconnect ok!&quot;);
+    } else {
+    log.log( &quot;Error in disconnect ok!&quot;);
+    }
+</body>
+            </effect>
+            <trigger xmi:type="uml:Trigger" xmi:id="_oWhDoEFkEei2i-24u3bMhw" event="_48Rm4EFiEei2i-24u3bMhw" port="_PpZCkEFkEei2i-24u3bMhw"/>
+          </transition>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_SzC7IEFkEei2i-24u3bMhw" kind="initial"/>
+          <subvertex xmi:type="uml:State" xmi:id="_SzHzoEFkEei2i-24u3bMhw" name="Idle"/>
+          <subvertex xmi:type="uml:State" xmi:id="_e0-b8EFkEei2i-24u3bMhw" name="Connected"/>
+        </region>
+      </ownedBehavior>
+    </packagedElement>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_Jwe9Uz1lEeiIRJ4hx81T3A">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Jwe9VD1lEeiIRJ4hx81T3A" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/umlrt#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_RT_PROFILE/uml-rt.profile.uml#_1h74oEeVEeO0lv5O1DTHOQ"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_Jwe9VT1lEeiIRJ4hx81T3A">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Jwe9Vj1lEeiIRJ4hx81T3A" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/umlrt/statemachine#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_RT_PROFILE/UMLRealTimeSM-addendum.profile.uml#_KLcn0FDtEeOA4ecmvfqvaw"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_Jwe9Vz1lEeiIRJ4hx81T3A">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Jwe9WD1lEeiIRJ4hx81T3A" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/umlrt/cppproperties#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://UMLRT_CPP/RTCppProperties.profile.uml#_vl5LALs8EeSTjNEQkASznQ"/>
+    </profileApplication>
+  </uml:Model>
+  <UMLRealTime:Capsule xmi:id="_XMBtsD1rEeiIRJ4hx81T3A" base_Class="_XL7nED1rEeiIRJ4hx81T3A"/>
+  <UMLRealTime:ProtocolContainer xmi:id="_qsNakEFiEei2i-24u3bMhw" base_Package="_qsGs4EFiEei2i-24u3bMhw"/>
+  <UMLRealTime:RTMessageSet xmi:id="_qslOAEFiEei2i-24u3bMhw" base_Interface="_qsfHYEFiEei2i-24u3bMhw"/>
+  <UMLRealTime:RTMessageSet xmi:id="_qsxbQEFiEei2i-24u3bMhw" base_Interface="_qssiwEFiEei2i-24u3bMhw" rtMsgKind="out"/>
+  <UMLRealTime:RTMessageSet xmi:id="_qs8aYEFiEei2i-24u3bMhw" base_Interface="_qs3h4EFiEei2i-24u3bMhw" rtMsgKind="inOut"/>
+  <UMLRealTime:Protocol xmi:id="_qtChAEFiEei2i-24u3bMhw" base_Collaboration="_ql5-QEFiEei2i-24u3bMhw"/>
+  <UMLRealTime:Capsule xmi:id="_9xwvIEFiEei2i-24u3bMhw" base_Class="_9xUDMEFiEei2i-24u3bMhw"/>
+  <UMLRTStateMachines:RTPseudostate xmi:id="_BBA5YEFjEei2i-24u3bMhw" base_Pseudostate="_BA49kEFjEei2i-24u3bMhw"/>
+  <UMLRTStateMachines:RTState xmi:id="_BBMfkEFjEei2i-24u3bMhw" base_State="_BBHnEEFjEei2i-24u3bMhw"/>
+  <UMLRTStateMachines:RTRegion xmi:id="_BBQxAEFjEei2i-24u3bMhw" base_Region="_BAyP4EFjEei2i-24u3bMhw"/>
+  <UMLRTStateMachines:RTStateMachine xmi:id="_BBgBkEFjEei2i-24u3bMhw" base_StateMachine="_BAc4sEFjEei2i-24u3bMhw"/>
+  <UMLRTStateMachines:RTState xmi:id="_KZkkMEFjEei2i-24u3bMhw" base_State="_KZgSwEFjEei2i-24u3bMhw"/>
+  <UMLRealTime:RTPort xmi:id="_R_MRwEFjEei2i-24u3bMhw" isPublish="false" isWired="true" base_Port="_R_EV8EFjEei2i-24u3bMhw"/>
+  <UMLRealTime:RTPort xmi:id="_VzC94EFjEei2i-24u3bMhw" isPublish="false" isWired="false" base_Port="_Vy-FYEFjEei2i-24u3bMhw"/>
+  <UMLRealTime:Capsule xmi:id="_M1D5wEFkEei2i-24u3bMhw" base_Class="_M08lAEFkEei2i-24u3bMhw"/>
+  <UMLRealTime:RTPort xmi:id="_PpcF4EFkEei2i-24u3bMhw" isPublish="false" isWired="true" base_Port="_PpZCkEFkEei2i-24u3bMhw"/>
+  <UMLRealTime:RTPort xmi:id="_RcmsoEFkEei2i-24u3bMhw" isPublish="false" isWired="false" base_Port="_RckQYEFkEei2i-24u3bMhw"/>
+  <UMLRTStateMachines:RTPseudostate xmi:id="_SzFXYEFkEei2i-24u3bMhw" base_Pseudostate="_SzC7IEFkEei2i-24u3bMhw"/>
+  <UMLRTStateMachines:RTState xmi:id="_SzK28EFkEei2i-24u3bMhw" base_State="_SzHzoEFkEei2i-24u3bMhw"/>
+  <UMLRTStateMachines:RTRegion xmi:id="_SzN6QEFkEei2i-24u3bMhw" base_Region="_Sy_30EFkEei2i-24u3bMhw"/>
+  <UMLRTStateMachines:RTStateMachine xmi:id="_SzQ9kEFkEei2i-24u3bMhw" base_StateMachine="_Sy5KIEFkEei2i-24u3bMhw"/>
+  <UMLRTStateMachines:RTState xmi:id="_e1ARIEFkEei2i-24u3bMhw" base_State="_e0-b8EFkEei2i-24u3bMhw"/>
+  <UMLRealTime:CapsulePart xmi:id="_4DFi0EFnEei2i-24u3bMhw" base_Property="_4DB4cEFnEei2i-24u3bMhw"/>
+  <UMLRealTime:CapsulePart xmi:id="_6E_wMEFnEei2i-24u3bMhw" base_Property="_6E8s4EFnEei2i-24u3bMhw"/>
+  <UMLRealTime:RTConnector xmi:id="_FQvackFpEei2i-24u3bMhw" base_Connector="_FQs-MEFpEei2i-24u3bMhw"/>
+  <UMLRealTime:RTPort xmi:id="_1cG_4EFvEei2i-24u3bMhw" isPublish="false" isWired="false" base_Port="_1cFKsEFvEei2i-24u3bMhw"/>
+</xmi:XMI>
