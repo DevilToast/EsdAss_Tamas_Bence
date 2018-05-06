@@ -1,115 +1,99 @@
 #include <stdio.h>
 #include <string.h>
-//#include <stdlib.h>
 #include <unistd.h>
 
 #include <pthread.h>
 #include <ps.h>
 #include <xtimer.h>
-//#include <thread.h>
+#include <thread.h>
+#include "periph/gpio.h"
 
 pthread_mutex_t dataMutex;
 pthread_cond_t conditionInputReady;
 
-typedef struct AndGate_t {
+typedef struct pipeInputBridge_t {
 	int in1;
 	int in2;
-	int out;
-} AndGate_t;
+} pipeInputBridge_t;
 
-AndGate_t andGate;
-int sysInput1 = 0;
-int sysInput2 = 0;
-int sysOutput = 0;
+typedef int pipeOutputBridge_t;
 
-void setSystemInputs(int aIn1, int aIn2) {
-	sysInput1 = aIn1;
-	sysInput2 = aIn2;
-	printf("System inputs set to %d and %d\n", aIn1, aIn2);
-}
+pipeInputBridge_t inputBridge;
+pipeOutputBridge_t outputBridge;
 
-void* handleData(void* arg);
+xtimer_t inputTimer;
+xtimer_t outputTimer;
 
-void* handleInput(void* arg) {
+void handleInput(void* arg) {
 	(void)arg;
-	while(1) {
-		pthread_mutex_lock(&dataMutex);
+	xtimer_set(&inputTimer, 500);
+
+	//static uint32_t oldTime = 0;
+	//uint32_t newTime = xtimer_now_usec();
+	//printf("Handle input period: %d", newTime - oldTime);
+	//oldTime = newTime;	
 	
-		andGate.in1 = sysInput1;
-		andGate.in2 = sysInput2;
-		printf("Inputs %d and %d loaded into And Gate\n", sysInput1, sysInput2);
-		pthread_cond_signal(&conditionInputReady);
-		pthread_mutex_unlock(&dataMutex);
-		xtimer_sleep(1);
+	pthread_mutex_lock(&dataMutex);
+
+	inputBridge.in1 = gpio_read(GPIO_PIN(PORT_A, 1));
+	inputBridge.in2 = gpio_read(GPIO_PIN(PORT_A, 5));
+
+	pthread_cond_signal(&conditionInputReady);
+	pthread_mutex_unlock(&dataMutex);
+}
+
+void handleData() {
+	pthread_mutex_lock(&dataMutex);
+	pthread_cond_wait(&conditionInputReady, &dataMutex);
+	outputBridge = inputBridge.in1 || inputBridge.in2;
+	xtimer_usleep(250);
+	pthread_mutex_unlock(&dataMutex);
+}
+
+void handleOutput(void* arg) {
+	(void)arg;
+	xtimer_set(&outputTimer, 500);
+
+	if (outputBridge) {
+		gpio_clear(GPIO_PIN(PORT_A, 4));
+	} else {
+		gpio_set(GPIO_PIN(PORT_A, 4));
 	}
+}
+
+void initGPIO() {
+	gpio_init(GPIO_PIN(PORT_A, 1), GPIO_IN_PU); 
+	gpio_init(GPIO_PIN(PORT_A, 5), GPIO_IN_PU);
+	gpio_init(GPIO_PIN(PORT_A, 4), GPIO_OUT);
+}
+
+void initTimers() {
+	inputTimer.callback = handleInput;
+	inputTimer.target = 0;
+	inputTimer.long_target = 0;
 	
-
-}
-
-void* handleData(void* arg) {
-	(void)arg;
-	while(1) {
-		pthread_mutex_lock(&dataMutex);
-		pthread_cond_wait(&conditionInputReady, &dataMutex);
-		andGate.out = andGate.in1 & andGate.in2;
-		xtimer_usleep(250);
-		printf("Output computed: %d\n", andGate.out);
-
-		pthread_mutex_unlock(&dataMutex);
-	}
-}
-
-void* handleOutput(void* arg) {
-	(void)arg;
-	while(1) {
-		sysOutput = andGate.out;
-		printf("Load output with %d\n", sysOutput);
-		xtimer_sleep(1);
-	}	
+	outputTimer.callback = handleOutput;
+	outputTimer.target = 0;
+	outputTimer.long_target = 0;
 }
 
 int main(void)
 {
-	(void) puts("Welcome to RIOT!");
+	initGPIO();
+	initTimers();
+	xtimer_init();
+	
+	pthread_mutex_init(&dataMutex, NULL);
+	pthread_cond_init (&conditionInputReady, NULL);	
 
 	printf("Running And Gate example!\n");
 
-	setSystemInputs(1, 1);	
-	pthread_t threads[3];
+	xtimer_set(&inputTimer, 0);
+	xtimer_set(&outputTimer, 0);
 
-	/* Initialize mutex and condition variable objects */
-	pthread_mutex_init(&dataMutex, NULL);
-	pthread_cond_init (&conditionInputReady, NULL);
+	while(1) {
+		handleData();
+	}	
 	
-	int ret = 0;
-	
-	//pthread_attr_t tattr;
-	//pthread_attr_init (&tattr);
-	//struct sched_param param;
-	//param.sched_priority = 6;
-	//pthread_attr_setschedparam (&tattr, &param);
-
-	ret = pthread_create(&threads[0], NULL, handleInput, NULL);
-	printf("Thread1 creation return value: %d\n", ret);
-	printf("Thread Id: %d\n", threads[0]);
-	pthread_create(&threads[1], NULL, handleData, NULL);
-	printf("Thread2 creation return value: %d\n", ret);
-	printf("Thread Id: %d\n", threads[1]);
-	pthread_create(&threads[2], NULL, handleOutput, NULL);
-	printf("Thread3 creation return value: %d\n", ret);
-	printf("Thread Id: %d\n", threads[2]);
-
-	pthread_cancel(threads[0]);	
-
-	pthread_join(threads[0], NULL);
-	pthread_join(threads[1], NULL);
-	pthread_join(threads[2], NULL);
-
-
-	/* Clean up and exit */
-	pthread_mutex_destroy(&dataMutex);
-	pthread_cond_destroy(&conditionInputReady);
-	pthread_exit (NULL);
-
 	return 0;
 }

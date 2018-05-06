@@ -31,6 +31,7 @@ QUIET ?= 1
 USEMODULE += ps
 USEMODULE += posix
 USEMODULE += pthread
+#USEMODULE += periph_gpio
 #USEMODULE += timers
 # include and auto-initialize all available sensors
 #USEMODULE += saul_default

@@ -1,0 +1,18 @@
+../../dist/tools/tapsetup/tapsetup -c
+
+RIOT RIOT sys posix pthread include pthread_cond.h
+
+#if defined(__WITH_AVRLIBC__) || (defined(__MACH__) && !defined(AVAILABLE_MAC_OS_X_VERSION_10_12_AND_LATER))
+//typedef int clockid_t;
+#endif 
+
+clockid_t commented out
+dmesg
+WERROR=0
+
+make BOARD=arduino-mega2560 WERROR=0
+
+sudo avrdude -v -p m2560 -c wiring -P /dev/ttyUSB0 -b 115200 -D -U flash:w:./bin/arduino-mega2560/my_project.hex:i
+sudo screen /dev/ttyUSB0 9600
+
+boards/common/arduino-atmega/include
